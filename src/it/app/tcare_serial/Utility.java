@@ -1,6 +1,6 @@
 package it.app.tcare_serial;
 
-import it.app.tcare.R;
+import it.app.tcare_serial.R;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

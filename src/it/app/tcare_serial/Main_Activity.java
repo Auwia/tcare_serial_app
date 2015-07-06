@@ -1,7 +1,5 @@
 package it.app.tcare_serial;
 
-import it.app.tcare_serial.R;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.Thread.State;
@@ -11,7 +9,6 @@ import java.util.Locale;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -37,6 +34,8 @@ import com.dwin.navy.serialportapi.SerialPortOpt;
 public class Main_Activity extends Activity {
 
 	public static Activity activity;
+
+	private static final String TAG = "TCARE_SERIAL";
 
 	private TextView label_start, label_pause, label_stop, title, title2,
 			percentage, percentuale_simbolo, duty, time, zero, dieci, venti,
@@ -113,18 +112,18 @@ public class Main_Activity extends Activity {
 		public void handleMessage(Message msg) {
 
 			if (preferences.getBoolean("isSmart", false)) {
-				Log.d("TCARE", "update SETTINGS set SMART=1, PHYSIO=0;");
+				Log.d(TAG, "update SETTINGS set SMART=1, PHYSIO=0;");
 				database.execSQL("update SETTINGS set SMART=1, PHYSIO=0;");
 			}
 
 			if (preferences.getBoolean("isPhysio", false)) {
-				Log.d("TCARE", "update SETTINGS set SMART=0, PHYSIO=1;");
+				Log.d(TAG, "update SETTINGS set SMART=0, PHYSIO=1;");
 				database.execSQL("update SETTINGS set SMART=0, PHYSIO=1;");
 			}
 
 			String query = "update SETTINGS set LANGUAGE='"
 					+ preferences.getString("language", "en") + "';";
-			Log.d("TCARE", query);
+			Log.d(TAG, query);
 			database.execSQL(query);
 		}
 	};
@@ -133,7 +132,7 @@ public class Main_Activity extends Activity {
 
 		public void handleMessage(Message msg) {
 
-			Log.d("TCARE",
+			Log.d(TAG,
 					"update SETTINGS set SERIAL_NUMBER='"
 							+ preferences.getString("serial_number",
 									"SN DEFAULT") + "';");
@@ -147,7 +146,7 @@ public class Main_Activity extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
-		Log.d("TCARE", "MAIN ACTIVITY: SONO IN onActivityResult");
+		Log.d(TAG, "MAIN ACTIVITY: SONO IN onActivityResult");
 
 		if (preferences.getBoolean("isSmart", false)) {
 			cap.setVisibility(View.INVISIBLE);
@@ -207,14 +206,14 @@ public class Main_Activity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity_layout);
 
-		Log.d("TCARE", "SONO IN ONCREATE");
+		Log.d(TAG, "SONO IN ONCREATE");
 
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		preferences = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 
-		Log.d("TCARE",
+		Log.d(TAG,
 				"EXIT (SONO IN ONCREATE)? "
 						+ preferences.getBoolean("exit", false));
 
@@ -635,7 +634,7 @@ public class Main_Activity extends Activity {
 	protected void onResume() {
 		super.onResume();
 
-		Log.d("TCARE", "SONO IN ONRESUME");
+		Log.d(TAG, "SONO IN ONRESUME");
 
 		datasource.open();
 
@@ -650,7 +649,7 @@ public class Main_Activity extends Activity {
 	protected void onStop() {
 
 		super.onStop();
-		Log.d("TCARE", "SONO IN ONSTOP");
+		Log.d(TAG, "SONO IN ONSTOP");
 	}
 
 	private class write_thread extends Thread {
@@ -660,14 +659,14 @@ public class Main_Activity extends Activity {
 
 		public void run() {
 
-			Log.d("TCARE", "ENTRO NELLO SCRIVO");
+			Log.d(TAG, "ENTRO NELLO SCRIVO");
 
 			boolean READ_ENABLE = true;
 			int exit = 0;
 
 			while (READ_ENABLE) {
 
-				// Log.d("TCARE", "SONO NELLO SCRIVO");
+				// Log.d(TAG, "SONO NELLO SCRIVO");
 
 				inviaComandi("W");
 
@@ -689,7 +688,7 @@ public class Main_Activity extends Activity {
 			}
 
 			// READ_ENABLE = false;
-			Log.d("TCARE", "ESCO DALLO SCRIVO");
+			Log.d(TAG, "ESCO DALLO SCRIVO");
 
 			try {
 				Thread.sleep(1000);
@@ -701,25 +700,22 @@ public class Main_Activity extends Activity {
 	}
 
 	private class ReadThread extends Thread {
-		byte[] buf = new byte[512];
-		InputStream instream;
 
 		private ReadThread(InputStream stream) {
-			instream = stream;
+			mInputStream = stream;
 			this.setPriority(Thread.MAX_PRIORITY);
 		}
 
 		public void run() {
 			super.run();
 
-			Log.d("TCARE", "ENTRO NEL LEGGO");
+			Log.d(TAG, "ENTRO NEL LEGGO");
 			int exit = 0;
 
 			byte[] buf = new byte[1024];
 
 			while (!isInterrupted()) {
 
-				int size;
 				if (mInputStream == null)
 					return;
 
@@ -735,7 +731,7 @@ public class Main_Activity extends Activity {
 							if (buf[count] == (byte) '\r') {
 
 								if (!readSB.toString().contains("W")) {
-									Log.d("TCARE",
+									Log.d(TAG,
 											"COMANDO_RICEVUTO="
 													+ readSB.toString());
 								}
@@ -745,7 +741,7 @@ public class Main_Activity extends Activity {
 
 							} else {
 								readSB.append((char) buf[count]);
-								// Log.d("TCARE",
+								// Log.d(TAG,
 								// "COMANDO_WIP_2=" + readSB.toString());
 							}
 						}
@@ -757,12 +753,12 @@ public class Main_Activity extends Activity {
 
 			}
 
-			// Log.d("TCARE", "EXIT=" + exit);
+			// Log.d(TAG, "EXIT=" + exit);
 			if (exit > preferences.getInt("timeout", 5)) {
-				Log.d("TCARE", "AZZERO LA SCHEDA");
+				Log.d(TAG, "AZZERO LA SCHEDA");
 			}
 
-			Log.d("TCARE", "ESCO DAL LEGGO");
+			Log.d(TAG, "ESCO DAL LEGGO");
 
 			try {
 				Thread.sleep(1000);
@@ -811,14 +807,14 @@ public class Main_Activity extends Activity {
 		 */
 		if (numBytes < 1) {
 			/* return the status with the error in the command */
-			Log.e("TCARE", "SendData: numero di byte nullo o negativo");
+			Log.e(TAG, "SendData: numero di byte nullo o negativo");
 			return status;
 		}
 
 		/* check for maximum limit */
 		if (numBytes > 256) {
 			numBytes = 256;
-			Log.e("TCARE", "SendData: numero di byte superiore a 256byte");
+			Log.e(TAG, "SendData: numero di byte superiore a 256byte");
 		}
 
 		/* prepare the packet to be sent */
@@ -846,7 +842,7 @@ public class Main_Activity extends Activity {
 
 		} catch (IOException e) {
 
-			Log.d("TCARE", "SendPacket: HO PERSO LA SCHEDA");
+			Log.d(TAG, "SendPacket: HO PERSO LA SCHEDA");
 
 		}
 	}
@@ -856,7 +852,7 @@ public class Main_Activity extends Activity {
 			serialPort.getOutputStream().write(comando);
 			serialPort.getOutputStream().flush();
 
-			Log.d("TCARE", "MandaDati: scrittura eseguita= " + comando);
+			Log.d(TAG, "MandaDati: scrittura eseguita= " + comando);
 
 		} catch (IOException e) {
 

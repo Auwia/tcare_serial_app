@@ -1,7 +1,5 @@
 package it.app.tcare_serial;
 
-import it.app.tcare_serial.R;
-
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -19,6 +17,8 @@ import android.widget.TextView;
 
 public class Utility {
 
+	private static final String TAG = "TCARE_SERIAL";
+	
 	private Activity activity;
 	private SeekBar seek_bar_percentage;
 	private TextView time, label_start, label_pause, label_stop,
@@ -37,12 +37,12 @@ public class Utility {
 			Process p = Runtime.getRuntime().exec("su");
 			DataOutputStream os = new DataOutputStream(p.getOutputStream());
 
-			Log.d("TCARE", "SPENGO IL CELL");
+			Log.d(TAG, "SPENGO IL CELL");
 			os.writeBytes("reboot -p" + "\n");
 			os.writeBytes("exit\n");
 			os.flush();
 
-			Log.d("TCARE", "FATTO! :)");
+			Log.d(TAG, "FATTO! :)");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -712,7 +712,7 @@ public class Utility {
 						}
 					}
 				} catch (Exception e) {
-					Log.d("TCARE", "Comando errato: " + command);
+					Log.d(TAG, "Comando errato: " + command);
 				}
 			}
 		});

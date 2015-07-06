@@ -25,6 +25,8 @@ import android.widget.TextView;
 
 public class Menu extends Activity {
 
+	private static final String TAG = "TCARE_SERIAL";
+	
 	private Button energy, button_energy, continuos, button_time, pulsed,
 			confirm, back, service;
 	private SeekBar seek_bar_frequency, seek_bar_energy;
@@ -40,13 +42,13 @@ public class Menu extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
-		Log.d("TCARE", "SONO IN MENU onActivityResult");
+		Log.d(TAG, "SONO IN MENU onActivityResult");
 
 		if (preferences.getBoolean("exit", false)) {
-			Log.d("TCARE", "MENU - APPLICO USCITA");
+			Log.d(TAG, "MENU - APPLICO USCITA");
 			finish();
 		} else {
-			Log.d("TCARE", "MENU - NON APPLICO USCITA");
+			Log.d(TAG, "MENU - NON APPLICO USCITA");
 		}
 	}
 
@@ -162,7 +164,7 @@ public class Menu extends Activity {
 		service.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				preferences.edit().putBoolean("isService", true).commit();
-				Intent intent = new Intent(Menu.this, Service.class);
+				Intent intent = new Intent(Menu.this, Service_app.class);
 				startActivityForResult(intent, 0);
 			}
 		});

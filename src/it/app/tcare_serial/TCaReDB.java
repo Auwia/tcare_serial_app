@@ -16,6 +16,8 @@ import android.util.Log;
 
 public class TCaReDB extends SQLiteOpenHelper {
 
+	private static final String TAG = "TCARE_SERIAL";
+	
 	private static final String DATABASE_NAME = "TCaReDB.db";
 	private static final int DATABASE_VERSION = 1;
 
@@ -54,7 +56,7 @@ public class TCaReDB extends SQLiteOpenHelper {
 		database.execSQL(CREATE_TABLE_TABLE_WORK_TIME);
 		database.execSQL(CREATE_TABLE_TABLE_PASSWORD);
 
-		Log.d("TCARE", "CREO TABELLA: " + CREATE_TABLE_TABLE_SETTINGS);
+		Log.d(TAG, "CREO TABELLA: " + CREATE_TABLE_TABLE_SETTINGS);
 
 		database.execSQL(CREATE_TABLE_TABLE_SETTINGS);
 

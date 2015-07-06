@@ -1,7 +1,5 @@
 package it.app.tcare_serial;
 
-import it.app.tcare_serial.R;
-
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -28,7 +26,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Service extends Activity {
+public class Service_app extends Activity {
+
+	private static final String TAG = "TCARE_SERIAL";
 
 	private Button esc, ok, zero, uno, due, tre, quattro, cinque, sei, sette,
 			otto, nove, password, del, serial_number_value, reset, english,
@@ -111,7 +111,7 @@ public class Service extends Activity {
 		try {
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 		} catch (NameNotFoundException e) {
-			Log.e("TCARE", "ERRORE STRANO QUI! " + e.getMessage());
+			Log.e(TAG, "ERRORE STRANO QUI! " + e.getMessage());
 		}
 		revision.setText(pInfo.versionName);
 
@@ -523,4 +523,5 @@ public class Service extends Activity {
 		return new BigInteger(1, hash).toString(16);
 
 	}
+
 }

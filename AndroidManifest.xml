@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.app.tcare_serial"
-    android:versionCode="1020"
-    android:versionName="1.02.0" >
+    android:versionCode="1040"
+    android:versionName="1.04.0" >
 
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="22" />
 
-    <uses-feature android:name="android.hardware.usb.accessory" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +16,16 @@
         android:label="@string/app_name"
         android:manageSpaceActivity="it.app.tcare_serial.Main_Activity"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        <receiver android:name=".autostart" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Test1Service"
+            android:enabled="true" />
+
         <activity
             android:name="it.app.tcare_serial.Main_Activity"
             android:label="@string/app_name"
@@ -25,14 +35,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED"
-                android:resource="@xml/accessory_filter" >
-            </meta-data>
         </activity>
         <activity
             android:name="it.app.tcare_serial.Menu"
@@ -40,7 +42,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="it.app.tcare_serial.Service"
+            android:name="it.app.tcare_serial.Service_app"
             android:label="@string/title_activity_service"
             android:screenOrientation="landscape" >
         </activity>

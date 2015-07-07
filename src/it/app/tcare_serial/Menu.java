@@ -1,7 +1,5 @@
 package it.app.tcare_serial;
 
-import it.app.tcare_serial.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +24,7 @@ import android.widget.TextView;
 public class Menu extends Activity {
 
 	private static final String TAG = "TCARE_SERIAL";
-	
+
 	private Button energy, button_energy, continuos, button_time, pulsed,
 			confirm, back, service;
 	private SeekBar seek_bar_frequency, seek_bar_energy;
@@ -160,14 +158,6 @@ public class Menu extends Activity {
 		cinque = (TextView) findViewById(R.id.cinque);
 
 		seek_bar_frequency.setMax(4);
-
-		service.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				preferences.edit().putBoolean("isService", true).commit();
-				Intent intent = new Intent(Menu.this, Service_app.class);
-				startActivityForResult(intent, 0);
-			}
-		});
 
 		back.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

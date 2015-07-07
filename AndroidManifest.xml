@@ -41,11 +41,6 @@
             android:label="@string/title_activity_menu"
             android:screenOrientation="landscape" >
         </activity>
-        <activity
-            android:name="it.app.tcare_serial.Service_app"
-            android:label="@string/title_activity_service"
-            android:screenOrientation="landscape" >
-        </activity>
     </application>
 
 </manifest>

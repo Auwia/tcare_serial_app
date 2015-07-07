@@ -20,22 +20,22 @@
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="60"
+                android:layout_weight="62"
                 android:gravity="right"
                 android:text="@string/title"
                 android:textColor="#86d9b5"
-                android:textSize="38sp"
+                android:textSize="60sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/title2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="40"
-                android:paddingLeft="10dp"
+                android:layout_weight="38"
+                android:paddingLeft="15dp"
                 android:text="@string/title2_smart"
                 android:textColor="#86d9b5"
-                android:textSize="38sp" />
+                android:textSize="60sp" />
         </TableRow>
 
         <TableRow
@@ -168,7 +168,8 @@
                     android:layout_alignRight="@+id/button_play"
                     android:layout_below="@+id/button_play"
                     android:gravity="center"
-                    android:text="@string/start" />
+                    android:text="@string/start"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/label_stop"
@@ -179,7 +180,8 @@
                     android:layout_alignLeft="@+id/button_stop"
                     android:layout_alignRight="@+id/button_stop"
                     android:gravity="center"
-                    android:text="@string/stop" />
+                    android:text="@string/stop"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/label_pause"
@@ -190,7 +192,8 @@
                     android:layout_alignLeft="@+id/button_pause"
                     android:layout_alignRight="@+id/button_pause"
                     android:gravity="center"
-                    android:text="@string/pause" />
+                    android:text="@string/pause"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
             <LinearLayout
@@ -250,6 +253,7 @@
                     android:layout_weight="20"
                     android:gravity="right|center_vertical"
                     android:textColor="@android:color/white"
+                    android:textSize="55sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -260,6 +264,7 @@
                     android:gravity="left|center_vertical"
                     android:text="@string/percentage"
                     android:textColor="@android:color/white"
+                    android:textSize="45sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -270,7 +275,8 @@
                     android:gravity="left|center_vertical"
                     android:paddingLeft="15dp"
                     android:text="@string/duty"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="55sp" />
             </TableRow>
 
             <RelativeLayout
@@ -296,9 +302,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/seek_bar_percentage"
                     android:layout_below="@+id/seek_bar_percentage"
-                    android:gravity="left"
+                    android:gravity="center"
+                    android:paddingRight="25sp"
                     android:text="@string/zero"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dieci"
@@ -308,7 +317,9 @@
                     android:layout_toRightOf="@+id/zero"
                     android:gravity="center"
                     android:text="@string/dieci"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/venti"
@@ -318,7 +329,9 @@
                     android:layout_toRightOf="@+id/dieci"
                     android:gravity="center"
                     android:text="@string/venti"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/trenta"
@@ -328,7 +341,9 @@
                     android:layout_toRightOf="@+id/venti"
                     android:gravity="center"
                     android:text="@string/trenta"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/quaranta"
@@ -338,7 +353,9 @@
                     android:layout_toRightOf="@+id/trenta"
                     android:gravity="center"
                     android:text="@string/quaranta"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/cinquanta"
@@ -348,7 +365,9 @@
                     android:layout_toRightOf="@+id/quaranta"
                     android:gravity="center"
                     android:text="@string/cinquanta"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/sessanta"
@@ -358,7 +377,9 @@
                     android:layout_toRightOf="@+id/cinquanta"
                     android:gravity="center"
                     android:text="@string/sessanta"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/settanta"
@@ -368,7 +389,9 @@
                     android:layout_toRightOf="@+id/sessanta"
                     android:gravity="center"
                     android:text="@string/settanta"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/ottanta"
@@ -378,7 +401,9 @@
                     android:layout_toRightOf="@+id/settanta"
                     android:gravity="center"
                     android:text="@string/ottanta"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/novanta"
@@ -388,7 +413,9 @@
                     android:layout_toRightOf="@+id/ottanta"
                     android:gravity="center"
                     android:text="@string/novanta"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/cento"
@@ -398,7 +425,9 @@
                     android:layout_toRightOf="@+id/novanta"
                     android:gravity="right"
                     android:text="@string/cento"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
 
             <LinearLayout
@@ -423,11 +452,13 @@
 
                         <Button
                             android:id="@+id/joule"
-                            android:layout_width="200dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/custom_button_set_value"
+                            android:layout_width="220dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/custom_button_energy_only_blue"
                             android:gravity="center_horizontal|center_vertical"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/jaule_label"
@@ -436,7 +467,8 @@
                             android:paddingLeft="10dp"
                             android:text="@string/setValue"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp" />
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
                     </TableRow>
 
                     <TableRow
@@ -447,12 +479,14 @@
 
                         <Button
                             android:id="@+id/energy"
-                            android:layout_width="200dp"
-                            android:layout_height="30dp"
+                            android:layout_width="220dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/custom_button_set_value"
                             android:gravity="center_horizontal|center_vertical"
                             android:text="@string/service"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/label_energy"
@@ -462,7 +496,8 @@
                             android:paddingLeft="10dp"
                             android:text="@string/energy"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp" />
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
                     </TableRow>
                 </TableLayout>
 
@@ -488,7 +523,8 @@
                         android:layout_gravity="center_vertical"
                         android:text="@string/freq"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         android:visibility="invisible" />
                 </LinearLayout>
             </LinearLayout>
@@ -514,6 +550,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@android:color/white"
+                    android:textSize="55sp"
                     android:textStyle="bold" />
             </TableRow>
 
@@ -551,7 +588,8 @@
                     android:gravity="center"
                     android:text="@string/frequency"
                     android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </TableRow>
         </TableLayout>
         <!-- ************************FINE COLONNA DI DESTRA ******************************* -->

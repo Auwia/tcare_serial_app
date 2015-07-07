@@ -3,7 +3,6 @@ package it.app.tcare_serial;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.Thread.State;
-import java.util.LinkedList;
 import java.util.Locale;
 
 import android.app.Activity;
@@ -37,12 +36,11 @@ public class Main_Activity extends Activity {
 
 	private static final String TAG = "TCARE_SERIAL";
 
-	private TextView label_start, label_pause, label_stop, title, title2,
-			percentage, percentuale_simbolo, duty, time, zero, dieci, venti,
-			trenta, quaranta, cinquanta, sessanta, settanta, ottanta, novanta,
-			cento;
+	private TextView label_start, label_pause, label_stop, title2, percentage,
+			zero, dieci, venti, trenta, quaranta, cinquanta, sessanta,
+			settanta, ottanta, novanta, cento;
 	private Button play, stop, pause, cap, res, body, face, menu, energy,
-			frequency, continuos;
+			joule, frequency, continuos;
 	private SeekBar seek_bar_percentage;
 
 	public static Utility utility;
@@ -62,13 +60,11 @@ public class Main_Activity extends Activity {
 	private Cursor cur;
 
 	private SerialPortOpt serialPort;
-	private LinkedList<byte[]> byteLinkedList = new LinkedList();
 
 	private InputStream mInputStream;
 	private ReadThread mReadThread;
 
 	private byte[] writeusbdata = new byte[256];
-	private byte[] usbdata = new byte[1024];;
 	private StringBuffer readSB = new StringBuffer();
 
 	public static write_thread writeThread;
@@ -148,6 +144,13 @@ public class Main_Activity extends Activity {
 
 		Log.d(TAG, "MAIN ACTIVITY: SONO IN onActivityResult");
 
+		if (preferences.getBoolean("exit", false)) {
+			Log.d(TAG, "MAIN ACTIVITY - APPLICO USCITA");
+			finish();
+		} else {
+			Log.d(TAG, "MAIN ACTIVITY - NON APPLICO USCITA");
+		}
+
 		if (preferences.getBoolean("isSmart", false)) {
 			cap.setVisibility(View.INVISIBLE);
 			res.setVisibility(View.INVISIBLE);
@@ -162,7 +165,7 @@ public class Main_Activity extends Activity {
 
 		if (requestCode == REQUEST_CODE_TEST) {
 			if (resultCode == Activity.RESULT_OK) {
-				if (data.hasExtra("comandi_da_eseguire")) {
+				if (data != null && data.hasExtra("comandi_da_eseguire")) {
 
 					Bundle b = data.getExtras();
 					String[] array = b.getStringArray("comandi_da_eseguire");
@@ -204,11 +207,12 @@ public class Main_Activity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_activity_layout);
-
-		Log.d(TAG, "SONO IN ONCREATE");
 
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+		setContentView(R.layout.layout_main_activity);
+
+		Log.d(TAG, "SONO IN ONCREATE");
 
 		preferences = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
@@ -259,13 +263,7 @@ public class Main_Activity extends Activity {
 
 		utility = new Utility(this);
 
-		title = (TextView) findViewById(R.id.title);
 		title2 = (TextView) findViewById(R.id.title2);
-
-		percentuale_simbolo = (TextView) findViewById(R.id.percentuale_simbolo);
-
-		duty = (TextView) findViewById(R.id.duty);
-		time = (TextView) findViewById(R.id.time);
 
 		continuos = (Button) findViewById(R.id.button_continuos);
 		continuos.setOnClickListener(new View.OnClickListener() {
@@ -316,6 +314,25 @@ public class Main_Activity extends Activity {
 				}
 			}
 
+		});
+
+		joule = (Button) findViewById(R.id.joule);
+		joule.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// show interest in events resulting from ACTION_DOWN
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+					return true;
+				}
+
+				if (event.getAction() != MotionEvent.ACTION_UP) {
+
+					return false;
+				}
+
+				return true;
+			}
 		});
 
 		energy = (Button) findViewById(R.id.energy);
@@ -372,8 +389,6 @@ public class Main_Activity extends Activity {
 
 		label_pause = (TextView) findViewById(R.id.label_pause);
 		label_pause.setTextSize(16);
-
-		time = (TextView) findViewById(R.id.time);
 
 		cap = (Button) findViewById(R.id.cap);
 		cap.setPressed(true);
@@ -456,30 +471,9 @@ public class Main_Activity extends Activity {
 		DisplayMetrics display = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(display);
 
-		int width, height;
+		int width;
 
 		width = display.widthPixels;
-		height = display.heightPixels;
-
-		float density = getResources().getDisplayMetrics().density;
-
-		int moltiplicativo = 0;
-		if (density == 1)
-			moltiplicativo = 5;
-
-		if (density == 3)
-			moltiplicativo = 2;
-
-		if (density == 1.5)
-			moltiplicativo = 4;
-
-		final int blocco2_dim = (int) (width * 50 / 100 / 4);
-		label_start.setWidth(blocco2_dim);
-		label_stop.setWidth(blocco2_dim);
-		label_pause.setWidth(blocco2_dim);
-		// label_start.setTextSize(width * moltiplicativo / 100 / 2);
-		// label_stop.setTextSize(width * moltiplicativo / 100 / 2);
-		// label_pause.setTextSize(width * moltiplicativo / 100 / 2);
 
 		menu = (Button) findViewById(R.id.menu);
 		menu.setOnClickListener(new View.OnClickListener() {
@@ -530,11 +524,6 @@ public class Main_Activity extends Activity {
 			}
 		});
 
-		percentage.setTextSize(height / 2 * 20 / 100 / density);
-		percentuale_simbolo.setTextSize(height / 2 * 20 / 100 / density);
-		duty.setTextSize(height / 2 * 20 / 100 / density / 2);
-		time.setTextSize(height / 2 * 20 / 100 / density);
-
 		android.view.ViewGroup.LayoutParams param = seek_bar_percentage
 				.getLayoutParams();
 		param.width = width * 70 / 100;
@@ -542,19 +531,16 @@ public class Main_Activity extends Activity {
 		int padding = (int) (width * 70 / 100 / 11);
 
 		zero.setWidth(padding);
-		dieci.setWidth(padding);
-		venti.setWidth(padding);
-		trenta.setWidth(padding);
-		quaranta.setWidth(padding);
-		cinquanta.setWidth(padding);
-		sessanta.setWidth(padding);
-		settanta.setWidth(padding);
-		ottanta.setWidth(padding);
-		novanta.setWidth(padding);
+		dieci.setWidth(padding - 15);
+		venti.setWidth(padding + 25);
+		trenta.setWidth(padding - 20);
+		quaranta.setWidth(padding + 25);
+		cinquanta.setWidth(padding - 20);
+		sessanta.setWidth(padding + 25);
+		settanta.setWidth(padding - 15);
+		ottanta.setWidth(padding + 20);
+		novanta.setWidth(padding - 15);
 		cento.setWidth(padding);
-
-		// energy.setWidth((int) (blocco2_dim * moltiplicativo));
-		// energy.setHeight((int) (blocco2_dim * moltiplicativo / 0.40));
 
 		if (preferences.getBoolean("isSmart", false)) {
 			cap.setVisibility(View.INVISIBLE);

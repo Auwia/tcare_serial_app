@@ -18,7 +18,7 @@ import android.widget.TextView;
 public class Utility {
 
 	private static final String TAG = "TCARE_SERIAL";
-	
+
 	private Activity activity;
 	private SeekBar seek_bar_percentage;
 	private TextView time, label_start, label_pause, label_stop,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.app.tcare_serial"
-    android:versionCode="1040"
-    android:versionName="1.04.0" >
+    android:versionCode="1050"
+    android:versionName="1.05.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="16"
         android:targetSdkVersion="22" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -16,12 +16,6 @@
         android:label="@string/app_name"
         android:manageSpaceActivity="it.app.tcare_serial.Main_Activity"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        <receiver android:name=".autostart" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
         <service
             android:name=".Test1Service"
             android:enabled="true" />
@@ -29,16 +23,36 @@
         <activity
             android:name="it.app.tcare_serial.Main_Activity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="it.app.tcare_serial.Menu"
             android:label="@string/title_activity_menu"
+            android:screenOrientation="landscape" >
+        </activity>
+
+        <receiver
+            android:name=".autostart"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".Service_tcare"
+            android:label="@string/title_activity_service"
             android:screenOrientation="landscape" >
         </activity>
     </application>

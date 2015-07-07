@@ -26,7 +26,7 @@ public class Menu extends Activity {
 	private static final String TAG = "TCARE_SERIAL";
 
 	private Button energy, button_energy, continuos, button_time, pulsed,
-			confirm, back, service;
+			confirm, back, button_service;
 	private SeekBar seek_bar_frequency, seek_bar_energy;
 	private TextView uno, due, tre, quattro, cinque, label_energy;
 	private LinearLayout simbolo_frequenza;
@@ -142,7 +142,7 @@ public class Menu extends Activity {
 		energy = (Button) findViewById(R.id.energy);
 		confirm = (Button) findViewById(R.id.button_confirm);
 		back = (Button) findViewById(R.id.button_back);
-		service = (Button) findViewById(R.id.service);
+		button_service = (Button) findViewById(R.id.service);
 
 		simbolo_frequenza = (LinearLayout) findViewById(R.id.simbolo_frequenza);
 		barra_orizzontale = (RelativeLayout) findViewById(R.id.barra_orizzontale);
@@ -374,6 +374,14 @@ public class Menu extends Activity {
 				}
 
 				return true;
+			}
+		});
+
+		button_service.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				preferences.edit().putBoolean("isService", true).commit();
+				Intent intent = new Intent(Menu.this, Service_tcare.class);
+				startActivityForResult(intent, 0);
 			}
 		});
 

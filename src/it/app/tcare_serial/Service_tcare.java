@@ -28,16 +28,156 @@ import android.widget.Toast;
 
 public class Service_tcare extends Activity {
 
-	private Button esc, ok, zero, uno, due, tre, quattro, cinque, sei, sette,
-			otto, nove, password, del, serial_number_value, reset, english,
-			russian, chinese, exit;
-	private TextView revision, versione_firmware_value, work_time_value;
-	private RadioButton radio_button_smart, radio_button_physio;
-	private LinearLayout english_rectangular, russian_rectangular,
-			chinese_rectangular;
+	/**
+	 * @uml.property  name="esc"
+	 * @uml.associationEnd  
+	 */
+	private Button esc;
+	/**
+	 * @uml.property  name="ok"
+	 * @uml.associationEnd  
+	 */
+	private Button ok;
+	/**
+	 * @uml.property  name="zero"
+	 * @uml.associationEnd  
+	 */
+	private Button zero;
+	/**
+	 * @uml.property  name="uno"
+	 * @uml.associationEnd  
+	 */
+	private Button uno;
+	/**
+	 * @uml.property  name="due"
+	 * @uml.associationEnd  
+	 */
+	private Button due;
+	/**
+	 * @uml.property  name="tre"
+	 * @uml.associationEnd  
+	 */
+	private Button tre;
+	/**
+	 * @uml.property  name="quattro"
+	 * @uml.associationEnd  
+	 */
+	private Button quattro;
+	/**
+	 * @uml.property  name="cinque"
+	 * @uml.associationEnd  
+	 */
+	private Button cinque;
+	/**
+	 * @uml.property  name="sei"
+	 * @uml.associationEnd  
+	 */
+	private Button sei;
+	/**
+	 * @uml.property  name="sette"
+	 * @uml.associationEnd  
+	 */
+	private Button sette;
+	/**
+	 * @uml.property  name="otto"
+	 * @uml.associationEnd  
+	 */
+	private Button otto;
+	/**
+	 * @uml.property  name="nove"
+	 * @uml.associationEnd  
+	 */
+	private Button nove;
+	/**
+	 * @uml.property  name="password"
+	 * @uml.associationEnd  
+	 */
+	private Button password;
+	/**
+	 * @uml.property  name="del"
+	 * @uml.associationEnd  
+	 */
+	private Button del;
+	/**
+	 * @uml.property  name="serial_number_value"
+	 * @uml.associationEnd  
+	 */
+	private Button serial_number_value;
+	/**
+	 * @uml.property  name="reset"
+	 * @uml.associationEnd  
+	 */
+	private Button reset;
+	/**
+	 * @uml.property  name="english"
+	 * @uml.associationEnd  
+	 */
+	private Button english;
+	/**
+	 * @uml.property  name="russian"
+	 * @uml.associationEnd  
+	 */
+	private Button russian;
+	/**
+	 * @uml.property  name="chinese"
+	 * @uml.associationEnd  
+	 */
+	private Button chinese;
+	/**
+	 * @uml.property  name="exit"
+	 * @uml.associationEnd  
+	 */
+	private Button exit;
+	/**
+	 * @uml.property  name="revision"
+	 * @uml.associationEnd  
+	 */
+	private TextView revision;
+	/**
+	 * @uml.property  name="versione_firmware_value"
+	 * @uml.associationEnd  
+	 */
+	private TextView versione_firmware_value;
+	/**
+	 * @uml.property  name="work_time_value"
+	 * @uml.associationEnd  
+	 */
+	private TextView work_time_value;
+	/**
+	 * @uml.property  name="radio_button_smart"
+	 * @uml.associationEnd  
+	 */
+	private RadioButton radio_button_smart;
+	/**
+	 * @uml.property  name="radio_button_physio"
+	 * @uml.associationEnd  
+	 */
+	private RadioButton radio_button_physio;
+	/**
+	 * @uml.property  name="english_rectangular"
+	 * @uml.associationEnd  
+	 */
+	private LinearLayout english_rectangular;
+	/**
+	 * @uml.property  name="russian_rectangular"
+	 * @uml.associationEnd  
+	 */
+	private LinearLayout russian_rectangular;
+	/**
+	 * @uml.property  name="chinese_rectangular"
+	 * @uml.associationEnd  
+	 */
+	private LinearLayout chinese_rectangular;
 
+	/**
+	 * @uml.property  name="work_time"
+	 */
 	private String work_time;
 
+	/**
+	 * @uml.property  name="preferences"
+	 * @uml.associationEnd  
+	 */
 	private SharedPreferences preferences;
 
 	@Override

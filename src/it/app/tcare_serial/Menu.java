@@ -25,15 +25,119 @@ public class Menu extends Activity {
 
 	private static final String TAG = "TCARE_SERIAL";
 
-	private Button energy, button_energy, continuos, button_time, pulsed,
-			confirm, back, button_service;
-	private SeekBar seek_bar_frequency, seek_bar_energy;
-	private TextView uno, due, tre, quattro, cinque, label_energy;
+	/**
+	 * @uml.property  name="energy"
+	 * @uml.associationEnd  
+	 */
+	private Button energy;
+
+	/**
+	 * @uml.property  name="button_energy"
+	 * @uml.associationEnd  
+	 */
+	private Button button_energy;
+
+	/**
+	 * @uml.property  name="continuos"
+	 * @uml.associationEnd  
+	 */
+	private Button continuos;
+
+	/**
+	 * @uml.property  name="button_time"
+	 * @uml.associationEnd  
+	 */
+	private Button button_time;
+
+	/**
+	 * @uml.property  name="pulsed"
+	 * @uml.associationEnd  
+	 */
+	private Button pulsed;
+
+	/**
+	 * @uml.property  name="confirm"
+	 * @uml.associationEnd  
+	 */
+	private Button confirm;
+
+	/**
+	 * @uml.property  name="back"
+	 * @uml.associationEnd  
+	 */
+	private Button back;
+
+	/**
+	 * @uml.property  name="button_service"
+	 * @uml.associationEnd  
+	 */
+	private Button button_service;
+	/**
+	 * @uml.property  name="seek_bar_frequency"
+	 * @uml.associationEnd  
+	 */
+	private SeekBar seek_bar_frequency;
+
+	/**
+	 * @uml.property  name="seek_bar_energy"
+	 * @uml.associationEnd  
+	 */
+	private SeekBar seek_bar_energy;
+	/**
+	 * @uml.property  name="uno"
+	 * @uml.associationEnd  
+	 */
+	private TextView uno;
+
+	/**
+	 * @uml.property  name="due"
+	 * @uml.associationEnd  
+	 */
+	private TextView due;
+
+	/**
+	 * @uml.property  name="tre"
+	 * @uml.associationEnd  
+	 */
+	private TextView tre;
+
+	/**
+	 * @uml.property  name="quattro"
+	 * @uml.associationEnd  
+	 */
+	private TextView quattro;
+
+	/**
+	 * @uml.property  name="cinque"
+	 * @uml.associationEnd  
+	 */
+	private TextView cinque;
+
+	/**
+	 * @uml.property  name="label_energy"
+	 * @uml.associationEnd  
+	 */
+	private TextView label_energy;
+	/**
+	 * @uml.property  name="simbolo_frequenza"
+	 * @uml.associationEnd  
+	 */
 	private LinearLayout simbolo_frequenza;
+	/**
+	 * @uml.property  name="barra_orizzontale"
+	 * @uml.associationEnd  
+	 */
 	private RelativeLayout barra_orizzontale;
 
+	/**
+	 * @uml.property  name="comando_da_inviare" multiplicity="(0 -1)" dimension="1"
+	 */
 	private String[] comando_da_inviare;
 
+	/**
+	 * @uml.property  name="preferences"
+	 * @uml.associationEnd  
+	 */
 	private SharedPreferences preferences;
 
 	@Override

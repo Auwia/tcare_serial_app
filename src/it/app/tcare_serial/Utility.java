@@ -19,15 +19,143 @@ public class Utility {
 
 	private static final String TAG = "TCARE_SERIAL";
 
+	/**
+	 * @uml.property  name="activity"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Activity activity;
+	/**
+	 * @uml.property  name="seek_bar_percentage"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private SeekBar seek_bar_percentage;
-	private TextView time, label_start, label_pause, label_stop,
-			label_continuos, label_energy, jaule_label;
-	private Button play, stop, pause, cap, res, body, face, energy, menu,
-			continuos, frequency, joule;
+	/**
+	 * @uml.property  name="time"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private TextView time;
+
+	/**
+	 * @uml.property  name="label_start"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private TextView label_start;
+
+	/**
+	 * @uml.property  name="label_pause"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private TextView label_pause;
+
+	/**
+	 * @uml.property  name="label_stop"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private TextView label_stop;
+
+	/**
+	 * @uml.property  name="label_continuos"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private TextView label_continuos;
+
+	/**
+	 * @uml.property  name="label_energy"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private TextView label_energy;
+
+	/**
+	 * @uml.property  name="jaule_label"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private TextView jaule_label;
+	/**
+	 * @uml.property  name="play"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button play;
+
+	/**
+	 * @uml.property  name="stop"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button stop;
+
+	/**
+	 * @uml.property  name="pause"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button pause;
+
+	/**
+	 * @uml.property  name="cap"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button cap;
+
+	/**
+	 * @uml.property  name="res"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button res;
+
+	/**
+	 * @uml.property  name="body"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button body;
+
+	/**
+	 * @uml.property  name="face"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button face;
+
+	/**
+	 * @uml.property  name="energy"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button energy;
+
+	/**
+	 * @uml.property  name="menu"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button menu;
+
+	/**
+	 * @uml.property  name="continuos"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button continuos;
+
+	/**
+	 * @uml.property  name="frequency"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button frequency;
+
+	/**
+	 * @uml.property  name="joule"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
+	private Button joule;
+	/**
+	 * @uml.property  name="pannello_energia"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private TableRow pannello_energia;
 
+	/**
+	 * @uml.property  name="preferences"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private SharedPreferences preferences;
+	/**
+	 * @uml.property  name="editor"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private SharedPreferences.Editor editor;
 
 	public void poweroff() {

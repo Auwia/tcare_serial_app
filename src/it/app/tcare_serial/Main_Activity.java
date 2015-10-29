@@ -36,11 +36,176 @@ public class Main_Activity extends Activity {
 
 	private static final String TAG = "TCARE_SERIAL";
 
-	private TextView label_start, label_pause, label_stop, title2, percentage,
-			zero, dieci, venti, trenta, quaranta, cinquanta, sessanta,
-			settanta, ottanta, novanta, cento;
-	private Button play, stop, pause, cap, res, body, face, menu, energy,
-			joule, frequency, continuos;
+	/**
+	 * @uml.property name="label_start"
+	 * @uml.associationEnd
+	 */
+	private TextView label_start;
+
+	/**
+	 * @uml.property name="label_pause"
+	 * @uml.associationEnd
+	 */
+	private TextView label_pause;
+
+	/**
+	 * @uml.property name="label_stop"
+	 * @uml.associationEnd
+	 */
+	private TextView label_stop;
+
+	/**
+	 * @uml.property name="title2"
+	 * @uml.associationEnd
+	 */
+	private TextView title2;
+
+	/**
+	 * @uml.property name="percentage"
+	 * @uml.associationEnd
+	 */
+	private TextView percentage;
+
+	/**
+	 * @uml.property name="zero"
+	 * @uml.associationEnd
+	 */
+	private TextView zero;
+
+	/**
+	 * @uml.property name="dieci"
+	 * @uml.associationEnd
+	 */
+	private TextView dieci;
+
+	/**
+	 * @uml.property name="venti"
+	 * @uml.associationEnd
+	 */
+	private TextView venti;
+
+	/**
+	 * @uml.property name="trenta"
+	 * @uml.associationEnd
+	 */
+	private TextView trenta;
+
+	/**
+	 * @uml.property name="quaranta"
+	 * @uml.associationEnd
+	 */
+	private TextView quaranta;
+
+	/**
+	 * @uml.property name="cinquanta"
+	 * @uml.associationEnd
+	 */
+	private TextView cinquanta;
+
+	/**
+	 * @uml.property name="sessanta"
+	 * @uml.associationEnd
+	 */
+	private TextView sessanta;
+
+	/**
+	 * @uml.property name="settanta"
+	 * @uml.associationEnd
+	 */
+	private TextView settanta;
+
+	/**
+	 * @uml.property name="ottanta"
+	 * @uml.associationEnd
+	 */
+	private TextView ottanta;
+
+	/**
+	 * @uml.property name="novanta"
+	 * @uml.associationEnd
+	 */
+	private TextView novanta;
+
+	/**
+	 * @uml.property name="cento"
+	 * @uml.associationEnd
+	 */
+	private TextView cento;
+	/**
+	 * @uml.property name="play"
+	 * @uml.associationEnd
+	 */
+	private Button play;
+
+	/**
+	 * @uml.property name="stop"
+	 * @uml.associationEnd
+	 */
+	private Button stop;
+
+	/**
+	 * @uml.property name="pause"
+	 * @uml.associationEnd
+	 */
+	private Button pause;
+
+	/**
+	 * @uml.property name="cap"
+	 * @uml.associationEnd
+	 */
+	private Button cap;
+
+	/**
+	 * @uml.property name="res"
+	 * @uml.associationEnd
+	 */
+	private Button res;
+
+	/**
+	 * @uml.property name="body"
+	 * @uml.associationEnd
+	 */
+	private Button body;
+
+	/**
+	 * @uml.property name="face"
+	 * @uml.associationEnd
+	 */
+	private Button face;
+
+	/**
+	 * @uml.property name="menu"
+	 * @uml.associationEnd
+	 */
+	private Button menu;
+
+	/**
+	 * @uml.property name="energy"
+	 * @uml.associationEnd
+	 */
+	private Button energy;
+
+	/**
+	 * @uml.property name="joule"
+	 * @uml.associationEnd
+	 */
+	private Button joule;
+
+	/**
+	 * @uml.property name="frequency"
+	 * @uml.associationEnd
+	 */
+	private Button frequency;
+
+	/**
+	 * @uml.property name="continuos"
+	 * @uml.associationEnd
+	 */
+	private Button continuos;
+	/**
+	 * @uml.property name="seek_bar_percentage"
+	 * @uml.associationEnd
+	 */
 	private SeekBar seek_bar_percentage;
 
 	public static Utility utility;
@@ -49,22 +214,54 @@ public class Main_Activity extends Activity {
 
 	private static final int REQUEST_CODE_TEST = 0;
 
+	/**
+	 * @uml.property name="bConfiged"
+	 */
 	private boolean bConfiged = false;
 
+	/**
+	 * @uml.property name="act_string"
+	 */
 	public String act_string;
 
 	// VARIABILI DATA BASE
 	private static final String DATABASE_NAME = "TCaReDB.db";
 	private static SQLiteDatabase database;
+	/**
+	 * @uml.property name="datasource"
+	 * @uml.associationEnd
+	 */
 	private TCaReDataSource datasource;
+	/**
+	 * @uml.property name="cur"
+	 * @uml.associationEnd
+	 */
 	private Cursor cur;
 
+	/**
+	 * @uml.property name="serialPort"
+	 * @uml.associationEnd
+	 */
 	private SerialPortOpt serialPort;
 
+	/**
+	 * @uml.property name="mInputStream"
+	 */
 	private InputStream mInputStream;
+	/**
+	 * @uml.property name="mReadThread"
+	 * @uml.associationEnd 
+	 *                     inverse="this$0:it.app.tcare_serial.Main_Activity$ReadThread"
+	 */
 	private ReadThread mReadThread;
 
+	/**
+	 * @uml.property name="writeusbdata" multiplicity="(0 -1)" dimension="1"
+	 */
 	private byte[] writeusbdata = new byte[256];
+	/**
+	 * @uml.property name="readSB"
+	 */
 	private StringBuffer readSB = new StringBuffer();
 
 	public static write_thread writeThread;
@@ -171,9 +368,10 @@ public class Main_Activity extends Activity {
 					String[] array = b.getStringArray("comandi_da_eseguire");
 
 					for (int i = 0; i < array.length; i++) {
-						if (array[i].length() > 1) {
-							serialPort.writeBytes(Utility
-									.stringToBytesASCII(array[i]));
+						if (utility.isInteger(array[i])) {
+
+							inviaComandiNumerici(Integer.valueOf(array[i]));
+
 						} else {
 							serialPort.writeBytes(Utility
 									.stringToBytesASCII(array[i]));

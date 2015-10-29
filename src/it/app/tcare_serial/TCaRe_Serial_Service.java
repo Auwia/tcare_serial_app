@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-public class Test1Service extends Service {
+public class TCaRe_Serial_Service extends Service {
 	private static final String TAG = "TCARE_SERIAL";
 
 	@Override

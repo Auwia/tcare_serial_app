@@ -9,7 +9,7 @@ public class autostart extends BroadcastReceiver {
 	private static final String TAG = "TCARE_SERIAL";
 
 	public void onReceive(Context arg0, Intent arg1) {
-		Intent intent = new Intent(arg0, Test1Service.class);
+		Intent intent = new Intent(arg0, TCaRe_Serial_Service.class);
 		arg0.startService(intent);
 		Log.i(TAG, "TCARE_SERIAL: started");
 	}

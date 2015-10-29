@@ -5,6 +5,10 @@ import android.database.SQLException;
 
 public class TCaReDataSource {
 
+	/**
+	 * @uml.property  name="dbHelper"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private TCaReDB dbHelper;
 	
 	public TCaReDataSource(Context context) 

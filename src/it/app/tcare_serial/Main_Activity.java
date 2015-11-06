@@ -370,9 +370,19 @@ public class Main_Activity extends Activity {
 					for (int i = 0; i < array.length; i++) {
 						if (utility.isInteger(array[i])) {
 
-							inviaComandiNumerici(Integer.valueOf(array[i]));
+							if (Integer.parseInt(array[i]) >= 150) {
+								inviaComandiNumerici(Integer.valueOf(array[i]));
+							} else {
+								Log.d(TAG,
+										"MandaDati: scrittura string eseguita= "
+												+ array[i]);
+								serialPort.writeBytes(Utility
+										.stringToBytesASCII(array[i]));
+							}
 
 						} else {
+							Log.d(TAG, "MandaDati: scrittura string eseguita= "
+									+ array[i]);
 							serialPort.writeBytes(Utility
 									.stringToBytesASCII(array[i]));
 						}
